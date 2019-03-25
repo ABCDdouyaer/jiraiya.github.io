@@ -4,7 +4,7 @@
 
 关于线程与进程的关系可以用下面的图进行说明：
 
-![](resources/5085638F3937035901A1CC2CCDCD6314.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/5085638F3937035901A1CC2CCDCD6314.png)
 
 * 进程好比图中的工厂，有单独的专属自己的工厂资源。
 * 线程好比图中的工人，多个工人在一个工厂中协作工作，工厂与工人是 `1:n`的关系。
@@ -17,7 +17,7 @@
 
 从更直观的例子来看，可以打开任务管理器查看，第一个 `tab`便是进程列表，每一个进程占有的 `CPU`资源和内存资源的比例很直观的展示出来。
 
-![](resources/8249E701E78BCC5561B70AE91006BDBA.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/8249E701E78BCC5561B70AE91006BDBA.png)
 
 ### 为什么js是单线程
 
@@ -27,7 +27,7 @@
 
 同样我们打开浏览器的任务管理器，以下图为例：
 
-![](resources/505C68C01D425DF59B2B76A426230A6D.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/505C68C01D425DF59B2B76A426230A6D.png)
 
 浏览器的每一个 `tab`页都是一个进程，有对应的内存占用空间、 `CPU`使用量以及进程ID。 新打开一个 `tab`页时，都会新建一个进程，所以就有一个 `tab`页对应一个进程的说法，但是这种说法又是错误的，因为浏览器有自己的优化机制，当我们打开多个空白的 `tab`页时，浏览器会将这多个空白页的进程合并为一个，从而减少了进程的数量个数。
 
@@ -91,7 +91,7 @@
 
 下图给出了同步任务与异步任务的执行流程：
 
-![](resources/31C6FDC64CD4EBCCC729BDD639AA787A.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/31C6FDC64CD4EBCCC729BDD639AA787A.png)
 
 * **栈** 就像是一个容器，任务都是在栈中执行。
 * **主线程** 就像是操作员，负责执行栈中的任务。
@@ -121,7 +121,7 @@
     console.log(5);
 ```
 
-![](resources/888148887EF4E588A5DDFDFFE171D193.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/888148887EF4E588A5DDFDFFE171D193.png)
 
 所以上面代码运行的结果为：1,3,2,5,4。
 
@@ -148,7 +148,7 @@
 
 所以上图的任务队列可以继续细化一下：
 
-![](resources/94469869C035A45A113B17A10D2BECD4.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/94469869C035A45A113B17A10D2BECD4.png)
 
 那么当栈为空时，宏任务和微任务的执行机制又是什么呢？
 
@@ -219,29 +219,29 @@ console.log(4);
 
 第一轮循环结束后，可以画出下图：
 
-![](resources/E82D5BE91EAB4C4E46D75B194BC70045.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/E82D5BE91EAB4C4E46D75B194BC70045.png)
 
 **第二轮循环**
 
 * 栈空后，先执行微任务队列中的 `then()`方法，输出 `4`，此时微任务队列为空。
 
-![](resources/F13530223917097C8BFF6AE0D4CCED93.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/F13530223917097C8BFF6AE0D4CCED93.png)
 
 * 读取宏任务队列的最靠前的任务 `setTimeout1`。
 * 先直接执行打印语句，打印日志 `1`，又遇到微任务 `then()`，加入微任务队列。第二轮循环结束。
 
-![](resources/7FA6C569C5D93A3A1B7E3770980204F7.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/7FA6C569C5D93A3A1B7E3770980204F7.png)
 
 **第三轮循环**
 
 * 先执行微任务队列中的 `then()`方法，输出 `2`，此时微任务队列为空。
 
-![](resources/AB5C94150D3FCB46FA2887E1FAD8A56E.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/AB5C94150D3FCB46FA2887E1FAD8A56E.png)
 
 * 继续读取宏任务队列的最靠前的任务 `setTimeout2`。
 * 直接执行打印语句，打印日志 `3`。第三轮循环结束，执行完毕。
 
-![](resources/4FCDFD0F0B71E528CDC40B14A3648856.png)
+![](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6/resources/4FCDFD0F0B71E528CDC40B14A3648856.png)
 
 最后我们是我们的boss，欢迎大家在评论区留言写出自己心中的那个正确答案。
 
