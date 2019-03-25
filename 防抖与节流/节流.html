@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流</title>
+</head>
+<body>
+    <div id="content1" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;margin-bottom:50px"></div>
+    <div id="content2" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ddd;font-size:80px;margin-bottom:50px"></div>
+    <script>
+      var [num1, num2] = [1, 1];
+      var [el1, el2] = [document.getElementById('content1'), document.getElementById('content2')];
+      var [add1, add2] = [()=>{el1.innerHTML = num1++}, ()=>{el2.innerHTML = num2++}];
+
+      //时间戳版本
+      function throttle1(ms, fn){
+          var previous = 0;
+          return function(){
+              var now = Date.now();
+              if(now - previous > ms){
+                  previous = now;
+                  fn.call(this)
+              }
+          }
+      }
+
+      //定时器版本
+      function throttle2(ms, fn){
+          var time = null;
+          return function(){
+              var self = this;
+              if(!time){
+                time = setTimeout(()=>{
+                      fn.call(self);
+                      time = null;
+                  }, ms)
+              }
+          }
+      }
+      el1.onmousemove = throttle1(1000, add1);
+      el2.onmousemove = throttle2(1000, add2);
+
+    /**
+    * @desc 函数节流
+    * @param func 函数
+    * @param wait 延迟执行毫秒数
+    * @param type 1 表时间戳版，2 表定时器版
+    */
+    function throttle(func, wait ,type) {
+        if(type===1){
+            var previous = 0;
+        }else if(type===2){
+            var timeout;
+        }
+
+        return function() {
+            var context = this;
+            var args = arguments;
+            if(type===1){
+                var now = Date.now();
+
+                if (now - previous > wait) {
+                    func.apply(context, args);
+                    previous = now;
+                }
+            }else if(type===2){
+                if (!timeout) {
+                    timeout = setTimeout(function(){
+                        timeout = null;
+                        func.apply(context, args)
+                    }, wait)
+                }
+            }
+
+        }
+    }
+
+    </script>   
+</body>
+</html>

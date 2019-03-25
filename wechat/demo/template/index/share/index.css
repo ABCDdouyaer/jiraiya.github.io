@@ -1,0 +1,7 @@
+.qrcode{
+    margin: 100px auto 0;
+    text-align: center;
+}
+.qrcode p{
+    font-size: 25px;
+}

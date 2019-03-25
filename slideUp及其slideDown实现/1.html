@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .row {
+        border: 1px solid rgba(255, 0, 0, .7);
+        width: 400px;
+        overflow: hidden;
+        }
+        
+        .slide {
+        background-color: rgba(0, 255, 0, .3);
+        padding: 5px;
+        transition: all  .5s cubic-bezier(0, 1, 0.5, 1);
+        transform: translateY(0);
+        }
+        
+        .slide-up {
+        transform: translateY(-100%);
+        }
+
+    
+    </style>
+</head>
+<body>
+<button id="toggleSlider">Toggle Slider</button>
+<div class="row">
+  <div class="slide">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim minus repellat amet nobis hic dolores blanditiis inventore quo ex quaerat omnis accusantium adipisci velit laborum facilis culpa nemo ab placeat!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptates tempore optio est nihil earum neque atque vero voluptatibus deserunt. Doloribus error voluptatem non quo molestias quisquam repellat odio tempora.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus culpa voluptate architecto deserunt nemo animi officiis debitis necessitatibus deleniti nobis pariatur doloribus facilis suscipit ipsa earum consectetur eligendi. Perspiciatis ratione. lorem</div>
+</div>
+<script>
+    var toggleButton = document.getElementById('toggleSlider'),
+    slide = document.querySelector('.slide');
+ 
+toggleButton.addEventListener('click', toggleSlider, false);
+ 
+function toggleSlider() {
+  if (slide.classList.contains('slide-up')) {
+    slide.classList.remove('slide-up');
+  } else {
+    slide.classList.add('slide-up');
+  }
+}
+</script>
+
+
+</body>
+</html>

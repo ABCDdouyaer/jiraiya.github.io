@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='./timeManger.js'></script>
+</head>
+<body>
+    <button id="btn">Button</button>
+    <div id="panel" style="width:600px;background:red;overflow:hidden">
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+       <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+       <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+      <li>wdwdawdwadwadawdawdawd</li>
+    </div>
+    <script>
+      window.onload=function(){
+        var btn   = document.getElementById("btn"),
+        panel = document.getElementById("panel");
+
+        // 为btn绑定onclick事件
+        btn.onclick = function() {
+            // 通过panel的offsetHeight来判断元素是否可见
+            if (panel.offsetHeight === 0) {
+                // 不可见，调用Slider.slideDown函数：在300毫秒内下拉
+                Slider.slideDown(panel, 1300);
+            } else {
+                // 可见，调用Slider.slideUp函数：在300毫秒内上滑
+                Slider.slideUp(panel, 1300);
+            }
+        };
+
+    }
+    </script>
+</body>
+</html>

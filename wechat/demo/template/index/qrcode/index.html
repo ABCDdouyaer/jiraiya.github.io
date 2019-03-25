@@ -1,0 +1,20 @@
+{% extends 'common/base.html'%}
+
+{% block header_content %}
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>微信场景值二维码页面</title>
+{% endblock %}
+
+{% block block_head_css %}
+ <link rel="stylesheet" href="/template/index/qrcode/index.css">
+{% endblock %}
+
+
+
+{% block block_body %}
+<div class='qrcode'> 
+    <p>带场景值的二维码</p>
+    <img src="{{url}}" alt="二维码">
+</div>
+{% endblock %}
