@@ -48,7 +48,7 @@ CreateDiv.prototype.init = function() {
 }
 
 //引入代理类
-var proxySingletonCreateDiv = (function() {
+var ProxySingletonCreateDiv = (function() {
 	var instance
 	return function(html) {
 		if (!instance) {
@@ -58,8 +58,8 @@ var proxySingletonCreateDiv = (function() {
 	}
 })()
 
-var a = new proxySingletonCreateDiv('sven1')
-var b = new proxySingletonCreateDiv('sven2')  
+var a = new ProxySingletonCreateDiv('sven1')
+var b = new ProxySingletonCreateDiv('sven2')  
 
 alert(a===b) // true
 ```
@@ -90,6 +90,85 @@ document.getElementById('loginBtn').onclick = function(){
 	var loginLayer = createSingleLoginLayer()
 	loginLayer.style.display = 'block'
 }
+```
+
+### 事件中心进行事件管理
+
+```
+
+function EventEmitter(){
+    this._listeners = {};
+}
+
+EventEmitter.prototype.on = function( eventName, fn, context){
+    if( ! this._listeners[eventName] ){
+        this._listeners[eventName] = [];
+    }
+    //不允许同一个function被多次绑定到同一个事件上
+    var canBind = true;
+    var fnArray = this._listeners[eventName];
+    for( var i = 0, len = fnArray.length; i < len; i++ ){
+        var fnObj = fnArray[i];
+        if( fnObj.fn === fn){
+            canBind = false;
+            break;
+        }
+    }
+    if( canBind ){
+        fnArray.push({
+            fn : fn,
+            context : context ? context : null
+        });
+    }
+    return this;
+};
+
+EventEmitter.prototype.off = function( eventName, fn){
+    if( ! eventName ){
+        this._listeners = null;
+        return this;
+    }
+    var fnArray = this._listeners[eventName];
+    if( ! fnArray || fnArray.length < 1 ){
+        return this;
+    }
+
+    for( var i = 0, len = fnArray.length; i < len; i++ ){
+        var fnObj = fnArray[i];
+        if( fnObj.fn === fn){
+            fnArray.splice( i, 1);
+            return this;
+        }
+    }
+    return this;
+};
+
+EventEmitter.prototype.emit = function( eventName, args ){
+    var fnArray = this._listeners[eventName];
+    if( ! fnArray || fnArray.length < 1 ){
+        return this;
+    }
+    //防止在 下面的回调执行过程中,前面的 回调函数,修改了原始 fnArray 的大小,导致后面的数组越界
+    fnArray = fnArray.slice();
+    for( var i = 0, len = fnArray.length; i < len; i++ ){
+        var fnObj = fnArray[i];
+        if( typeof fnObj.fn === 'function'){
+            fnObj.fn.call( fnObj.context, args);
+        }
+    }
+
+    return this;
+};
+
+//全局事件中心
+var eventCenter =  new EventEmitter();
+
+eventCenter.on('err', function(e){
+    console.log(e)
+})
+
+eventCenter.emit('err', '错误信息');
+
 ```
 
 ##### 单例模式是一种简单但非常使用的技术，特别是惰性单例技术，在合适的时候才创建对象，并且至创建唯一的一个。更奇妙的是，创建对象和管理单例的职责被分布在两个不同的方法中，这两个方法组合起来才具有单例模式的威力。

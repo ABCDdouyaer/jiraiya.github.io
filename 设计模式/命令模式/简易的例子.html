@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简易的例子</title>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <button id="btn">发送命令</button>
+    <script>
+       window.onload = function(){
+
+          //接受命令者要执行的命令
+          let buttonMenuCommand = function(receiver){
+              return {
+                  execute(){
+                      for(let i=0;i<receiver.length;i++){
+                        receiver[i].innerHTML = '改变了...';
+                      }   
+                  }
+              }
+          }
+          
+          //发送者发送命令给接受者
+          let setCommand = function(button, receiverDoSomething){
+              button.onclick = function(){
+                 receiverDoSomething.execute();
+              }
+          }
+
+           //传入接受命令者
+           let innerHtmlChange = buttonMenuCommand(document.getElementsByTagName('div'));
+          
+          
+          //发送命令
+          setCommand(document.getElementById('btn'), innerHtmlChange);
+
+       }
+    </script>
+</body>
+</html>

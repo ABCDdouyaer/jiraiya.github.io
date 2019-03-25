@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<form action="http://www.baidu.com" id="registerForm" method="post">
+	请输入用户名<input type="text" name="username"/><br />
+	请输入密码<input type="text" name="password"/><br />
+	请输入手机号<input type="text" name="phonenumber"/><br />
+	<input type="submit" value="提交" style="padding: 10px 20px;">
+</form>
+<script type="text/javascript">
+
+var Validator = function() {
+	//保存校验规则
+	this.cache = [] 
+}
+
+// 添加校验
+Validator.prototype.add = function(dom, rules) {
+	var self = this
+	// 遍历校验规则
+	for(var i = 0, rule; rule = rules[i++];) { 
+		(function(rule){
+			//把strategy和参数分开
+			var strategyAry = rule.strategy.split(':') 	
+			var errorMsg = rule.errorMsg	
+			// 把校验的步骤用空函数包装起来，并且放入cache
+			self.cache.push(function(){	
+				// 挑选出校验规则
+				var strategy = strategyAry.shift()
+				// 把input的value添加进参数列表
+				strategyAry.unshift(dom.value)		
+				// 把errorMsg添加进参数列表
+				strategyAry.push(errorMsg)			
+				return strategies[strategy].apply(dom, strategyAry)
+			})
+		})(rule)
+	}
+}
+
+// 启动校验
+Validator.prototype.start = function() {
+	for (var i = 0, validatorFunc; validatorFunc = this.cache[i++];) { 
+		// 开始校验，并取得校验后的结果
+		var errorMsg = validatorFunc() 
+		if (errorMsg) {
+			return errorMsg
+		}
+	}
+}
+
+var registerForm = document.getElementById('registerForm')
+
+var validataFunc = function() {
+	var validator = new Validator()
+	validator.add(registerForm.username, [
+			{
+				strategy: 'isNonEmpty',
+				errorMsg: '用户名不能为空'
+			},
+			{
+				strategy: 'minLength:10',
+				errorMsg: '用户名长度不能小于10位'						
+			}
+		]
+	)
+	validator.add(registerForm.password, [
+			{
+				strategy: 'minLength:6',
+				errorMsg: '密码长度不能小于6位'						
+			}
+		]
+	)
+	validator.add(registerForm.phonenumber, [
+			{
+				strategy: 'isMobile',
+				errorMsg: '手机号码格式不正确'						
+			}
+		]
+	)								
+	var errorMsg = validator.start()
+    return errorMsg							
+}
+
+var sub = document.querySelector('input[type="submit"]')
+sub.onclick = function() {
+	var errorMsg = validataFunc()
+	if (errorMsg) {
+		console.error(errorMsg)
+		return false
+	}
+}
+
+</script>	
+</body>
+</html>

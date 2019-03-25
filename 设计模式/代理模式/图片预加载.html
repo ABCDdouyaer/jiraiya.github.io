@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片预加载</title>
+</head>
+<body>
+    <div class='imgBox'></div>
+    <script>
+
+      let creatImgNode = (function(){
+          let imgNode = document.createElement('img');
+          document.body.appendChild(imgNode);
+          return {
+              setEnsureSrc: function(src){
+                  imgNode.src = src;
+              }
+          }
+      })();
+
+      let proxyImage = (function(){
+          let imgNode = document.getElementsByTagName('img')[0];
+          imgNode.onload = function(){
+              creatImgNode.setEnsureSrc(this.src);
+          }
+          return {
+              setLoadingSrc: function(src){
+                  creatImgNode.setEnsureSrc('./load.png');
+                  imgNode.src = src;
+              }
+          }
+          
+      })()
+
+    proxyImage.setLoadingSrc('https://s0.renrendai.com/cms/5864b0d6a24d131067ef7956/wangqiushi/banner/0124-JX-PCLB.jpg');
+    </script>
+</body>
+</html>
