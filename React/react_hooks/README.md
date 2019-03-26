@@ -184,7 +184,7 @@ export default withUser(UserPage);
 
 以上这两种模式看上去都挺不错的，很多库也运用了这种模式，比如我们常用的React Router。但我们仔细看这两种模式，会发现它们会增加我们代码的层级关系。最直观的体现，打开devtool看看你的组件层级嵌套是不是很夸张吧。这时候再回过头看我们上一节给出的hooks例子，是不是简洁多了，没有多余的层级嵌套。把各种想要的功能写成一个一个可复用的自定义hook，当你的组件想用什么功能时，直接在组件里调用这个hook即可。
 
-![](resources/D24CEAEB76EBE3286D837FC5EBFA5299)
+![D24CEAEB76EBE3286D837FC5EBFA5299](https://user-images.githubusercontent.com/31639964/54898160-17405180-4f06-11e9-88c2-6dc0a46176d5.png)
 
 生命周期钩子函数里的逻辑太乱了吧！
 

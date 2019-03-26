@@ -7,8 +7,7 @@
 ### 1. 同获取用户信息及其openId流程一样，绑定安全域名及添加IP白名单，查看接口权限
 
 ### 2. 设置服务器配置并启用服务器
-
-![Alt text](./source/8.png)
+![8](https://user-images.githubusercontent.com/31639964/54968295-19151e00-4fb5-11e9-83aa-a8408d4911fe.png)
 
 关于服务器地址接口的开发流程见下面的开发流程
 
@@ -47,16 +46,13 @@
 ### 1. 下载[natapp](https://natapp.cn/)并按照官网指示安装
 
 ### 2. 购买隧道（注册账号可以免费领取一个）设置natapp需要穿透的地址
-
-![Alt text](./source/9.png)
+![9](https://user-images.githubusercontent.com/31639964/54968303-20d4c280-4fb5-11e9-8b21-e90f8d8a0d1e.png)
 
 ### 3. 启动natapp获取随机分配的域名
-
-![Alt text](./source/10.png)
+![10](https://user-images.githubusercontent.com/31639964/54968312-27633a00-4fb5-11e9-8e00-d788cd3c11b6.png)
 
 ### 4. 公众平台设置服务器配置并启用服务器
-
-![Alt text](./source/11.png)
+![11](https://user-images.githubusercontent.com/31639964/54968315-2e8a4800-4fb5-11e9-91a7-a243a050014e.png)
 
 ### 5.关注该测试公众号并进行测试
 

@@ -15,22 +15,19 @@
 ### 2.对公众平台进行配置
 
 #### 2-1.将网站域名加入网页授权域名
-
-![Alt text](./source/1.png)
-
+![1](https://user-images.githubusercontent.com/31639964/54967963-f5050d00-4fb3-11e9-812e-36b88ad6f0c2.png)
 添加安全域名微信要对该域名做校验，需要将微信分配的xxx.txt文件放到网站服务器保证微信能够访问到该文件
 
-![Alt text](./source/2.png)
+![2](https://user-images.githubusercontent.com/31639964/54967978-fe8e7500-4fb3-11e9-81e2-0ae321033c98.png)
 
 #### 2-2.将网站IP地址加入IP白名单,记录appId和appSecret
-
-![Alt text](./source/3.png)
+![3](https://user-images.githubusercontent.com/31639964/54967991-06e6b000-4fb4-11e9-8d3f-ea75faeecc03.png)
 
 #### 2-3.确认该公众号的网页授权获取用户基本信息权限开通
 
 开发下面的接口权限处查看
 
-![Alt text](./source/4.png)
+![4](https://user-images.githubusercontent.com/31639964/54968008-0f3eeb00-4fb4-11e9-91c1-e1f951291973.png)
 
 ## 获取openId及其unionId流程
 
@@ -44,7 +41,7 @@
 
 分为静默授权和用户手动授权，静默授权用户无法察觉，手动授权会弹出如下页面，需要用户手动允许
 
-![Alt text](./source/5.png)
+![5](https://user-images.githubusercontent.com/31639964/54968016-182fbc80-4fb4-11e9-9bea-71759f8b5cd3.png)
 
 链接重定向后的query自动附加code码（code码的有效期为5分钟）
 
@@ -76,16 +73,17 @@
 
 <table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>openid</td><td>用户的唯一标识</td></tr><tr><td>nickname</td><td>用户昵称</td></tr><tr><td>sex</td><td>用户的性别，值为1时是男性，值为2时是女性，值为0时是未知</td></tr><tr><td>province</td><td>用户个人资料填写的省份</td></tr><tr><td>city</td><td>普通用户个人资料填写的城市</td></tr><tr><td>country</td><td>国家，如中国为CN</td></tr><tr><td>headimgurl</td><td>用户头像，最后一个数值代表正方形头像大小（有0、46、64、96、132数值可选，0代表640*640正方形头像），用户没有头像时该项为空。若用户更换头像，原有头像URL将失效。</td></tr><tr><td>privilege</td><td>用户特权信息，json 数组，如微信沃卡用户为（chinaunicom）</td></tr><tr><td>unionid</td><td>只有在用户将公众号绑定到微信开放平台帐号后，才会出现该字段。</td></tr></tbody></table>
 
+### 4.流程图如下
+
+![image](https://user-images.githubusercontent.com/31639964/54968093-6a70dd80-4fb4-11e9-9cad-a79f1327ea3d.png)
 
 ## 本地测试
 
 ### 1.微信公众平台绑定自己的微信账号为开发者
-
-![Alt text](./source/6.png)
+![6](https://user-images.githubusercontent.com/31639964/54968050-3ac1d580-4fb4-11e9-89d2-375b259db368.png)
 
 ### 2.下载微信开发工具
-
-![Alt text](./source/7.png)
+![7](https://user-images.githubusercontent.com/31639964/54968058-431a1080-4fb4-11e9-8413-520bcbf7a669.png)
 
 ### 3.本地测试需要将本地的服务器端口改为80并将host文件的 127.0.0.1指向安全域名，并在微信公众平台中测试
 

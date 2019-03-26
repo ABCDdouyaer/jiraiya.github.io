@@ -75,13 +75,12 @@ player4.die();
 player3.die();
 ```
 
-![](resource/167d8a241604adab)
+![167d8a241604adab](https://user-images.githubusercontent.com/31639964/54898315-bcf3c080-4f06-11e9-9029-2891c2e250cd.png)
 
 **重构思路**
 
 如果玩家不止8个，有成百上千个。一个玩家如果掉线或者更换队伍，上面的代码完全无法解决。所以需要一个中间对象去管理每个玩家之间的状态与关系。如下图所示
-
-![](resource/167d8a24162092f2)
+![167d8a24162092f2](https://user-images.githubusercontent.com/31639964/54898398-1fe55780-4f07-11e9-832e-abc001b1e1ac.png)
 
 **代码重构(使用中介者模式)**
 
@@ -187,8 +186,7 @@ player2.die();
 player3.die(); 
 player4.die();
 ```
-
-![](resource/167d8a241662b8fc)
+![167d8a241662b8fc](https://user-images.githubusercontent.com/31639964/54898411-2f64a080-4f07-11e9-8e36-ed3037a5ca64.png)
 
 现在可以随时的进行掉线或者换队操作，玩家之间的耦合基本上消失了。
 

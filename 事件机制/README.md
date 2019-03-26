@@ -3,8 +3,7 @@
 ### 线程与进程
 
 关于线程与进程的关系可以用下面的图进行说明：
-
-![](resources/5085638F3937035901A1CC2CCDCD6314.png)
+![31C6FDC64CD4EBCCC729BDD639AA787A](https://user-images.githubusercontent.com/31639964/54896393-f3c5d880-4efe-11e9-9763-37272baea9c9.png)
 
 * 进程好比图中的工厂，有单独的专属自己的工厂资源。
 * 线程好比图中的工人，多个工人在一个工厂中协作工作，工厂与工人是 `1:n`的关系。
@@ -16,8 +15,7 @@
 * 线程是 `CPU`调度的最小单位。
 
 从更直观的例子来看，可以打开任务管理器查看，第一个 `tab`便是进程列表，每一个进程占有的 `CPU`资源和内存资源的比例很直观的展示出来。
-
-![](resources/8249E701E78BCC5561B70AE91006BDBA.png)
+![8249E701E78BCC5561B70AE91006BDBA](https://user-images.githubusercontent.com/31639964/54897892-3d192680-4f05-11e9-8805-881220bcd9aa.png)
 
 ### 为什么js是单线程
 
@@ -27,7 +25,7 @@
 
 同样我们打开浏览器的任务管理器，以下图为例：
 
-![](resources/505C68C01D425DF59B2B76A426230A6D.png)
+![505C68C01D425DF59B2B76A426230A6D](https://user-images.githubusercontent.com/31639964/54897917-50c48d00-4f05-11e9-8459-671b8db381eb.png)
 
 浏览器的每一个 `tab`页都是一个进程，有对应的内存占用空间、 `CPU`使用量以及进程ID。 新打开一个 `tab`页时，都会新建一个进程，所以就有一个 `tab`页对应一个进程的说法，但是这种说法又是错误的，因为浏览器有自己的优化机制，当我们打开多个空白的 `tab`页时，浏览器会将这多个空白页的进程合并为一个，从而减少了进程的数量个数。
 
@@ -91,7 +89,7 @@
 
 下图给出了同步任务与异步任务的执行流程：
 
-![](resources/31C6FDC64CD4EBCCC729BDD639AA787A.png)
+![31C6FDC64CD4EBCCC729BDD639AA787A](https://user-images.githubusercontent.com/31639964/54897936-633ec680-4f05-11e9-9752-6ee2ef16581f.png)
 
 * **栈** 就像是一个容器，任务都是在栈中执行。
 * **主线程** 就像是操作员，负责执行栈中的任务。
@@ -120,8 +118,7 @@
     fn2();
     console.log(5);
 ```
-
-![](resources/888148887EF4E588A5DDFDFFE171D193.png)
+![F13530223917097C8BFF6AE0D4CCED93](https://user-images.githubusercontent.com/31639964/54897957-72be0f80-4f05-11e9-9bfb-ad457db090ba.png)
 
 所以上面代码运行的结果为：1,3,2,5,4。
 
@@ -147,8 +144,7 @@
 * 如果是微任务，则直接压入微任务队列。
 
 所以上图的任务队列可以继续细化一下：
-
-![](resources/94469869C035A45A113B17A10D2BECD4.png)
+![94469869C035A45A113B17A10D2BECD4](https://user-images.githubusercontent.com/31639964/54897982-849fb280-4f05-11e9-835f-0ff1a98cde79.png)
 
 那么当栈为空时，宏任务和微任务的执行机制又是什么呢？
 
@@ -218,30 +214,27 @@ console.log(4);
 * 最后遇到打印语句，直接打印日志 `5`。
 
 第一轮循环结束后，可以画出下图：
-
-![](resources/E82D5BE91EAB4C4E46D75B194BC70045.png)
+![E82D5BE91EAB4C4E46D75B194BC70045](https://user-images.githubusercontent.com/31639964/54898008-95e8bf00-4f05-11e9-9571-e72925ff2d77.png)
 
 **第二轮循环**
 
 * 栈空后，先执行微任务队列中的 `then()`方法，输出 `4`，此时微任务队列为空。
+![F13530223917097C8BFF6AE0D4CCED93](https://user-images.githubusercontent.com/31639964/54898034-a1d48100-4f05-11e9-8505-dcf0b218a777.png)
 
-![](resources/F13530223917097C8BFF6AE0D4CCED93.png)
 
 * 读取宏任务队列的最靠前的任务 `setTimeout1`。
 * 先直接执行打印语句，打印日志 `1`，又遇到微任务 `then()`，加入微任务队列。第二轮循环结束。
-
-![](resources/7FA6C569C5D93A3A1B7E3770980204F7.png)
+![7FA6C569C5D93A3A1B7E3770980204F7](https://user-images.githubusercontent.com/31639964/54898041-ab5de900-4f05-11e9-934f-8f7f8c52fe2b.png)
 
 **第三轮循环**
 
 * 先执行微任务队列中的 `then()`方法，输出 `2`，此时微任务队列为空。
-
-![](resources/AB5C94150D3FCB46FA2887E1FAD8A56E.png)
+![AB5C94150D3FCB46FA2887E1FAD8A56E](https://user-images.githubusercontent.com/31639964/54898066-b7e24180-4f05-11e9-9f83-8a17d195b292.png)
 
 * 继续读取宏任务队列的最靠前的任务 `setTimeout2`。
 * 直接执行打印语句，打印日志 `3`。第三轮循环结束，执行完毕。
 
-![](resources/4FCDFD0F0B71E528CDC40B14A3648856.png)
+![4FCDFD0F0B71E528CDC40B14A3648856](https://user-images.githubusercontent.com/31639964/54898074-c0d31300-4f05-11e9-8354-3000e6152fc2.png)
 
 最后我们是我们的boss，欢迎大家在评论区留言写出自己心中的那个正确答案。
 
