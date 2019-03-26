@@ -56,6 +56,10 @@
 
 ### 5.关注该测试公众号并进行测试
 
+## 测试demo
+
+[基于koa2写的一个测试demo](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/wechat/demo)
+
 ## 参考资料
 
 * [微信官方文档](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1443433542)

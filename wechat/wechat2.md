@@ -59,6 +59,10 @@ wx.ready(function(){
 
 ## 测试方式同获取用户信息及其openId的测试方式一样
 
+## 测试demo
+
+[基于koa2写的一个测试demo](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/wechat/demo)
+
 ## 参考资料
 
 * [微信官方文档](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421141115)

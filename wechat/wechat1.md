@@ -2,6 +2,8 @@
 
 > openId及其unionId主要用于h5页面在微信浏览器中的自动登录，小程序、公众号、web站及其app的账号互通
 
+### [基于koa2写的一个测试demo](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/wechat/demo)
+
 ## 概念 
 
 **openId:** 当用户关注微信公众号以后，用户与该公众号会产生唯一标示。每个用户对每个公众号的OpenID是唯一的，对于不同公众号，同一用户的OpenID不同。(小程序同理)
@@ -89,6 +91,9 @@
 
 ### 4.手机微信中测试需将手机代理设置为电脑，并访问安全域名
 
+## 测试demo
+
+[基于koa2写的一个测试demo](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/wechat/demo)
 
 ## 参考资料
 

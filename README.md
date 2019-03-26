@@ -12,6 +12,7 @@
 - [微信公众号开发之JS-SDK相关流程](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/1)
 - [微信公众号开发之获取用户信息及其openId流程](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/23)
 - [微信公众号开发之生成带场景值二维码及其被动回复消息](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/24)
+- [微信公众开发相关demo](https://github.com/ABCDdouyaer/jiraiya.github.io/tree/master/wechat/demo)
 
 ## webpack
 
