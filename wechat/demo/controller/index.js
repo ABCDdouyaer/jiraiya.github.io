@@ -1,7 +1,7 @@
 const env = require('../template/index');
 const WechatTemplate = require('../common/utils/wx_template.js');
 const crypto = require('crypto');
-
+const moment = require('moment');
 async function index_page(ctx, next){
     ctx.response.type = 'text/html';
     ctx.response.body = env.render('template/home/index/index.html')
@@ -84,13 +84,26 @@ async function share_page(ctx, next){
 
 
 
-//获取openid页面
+//静默授权获取openid页面
 async function getOpenId_page(ctx, next){
     ctx.response.type = 'text/html';
     ctx.response.body = env.render('template/index/openid/index.html',{openId: G_Redis.get('openId')});
 }  
 
 
+//手动授权获取openid及其unionId 以及用户信息
+async function getUserInfo_page(ctx, next){
+    ctx.response.type = 'text/html';
+    ctx.response.body = env.render('template/index/getuserinfo/index.html',{userInfo: G_Redis.get('userInfo'), type: false});
+}
+
+//手动授权获取openid及其unionId 以及用户信息
+async function accessTokenGetUserInfo_page(ctx, next){
+    const data = await G_Wx.getUserInfo();
+    data.subscribe_time = moment(data.subscribe_time * 1000).format('YYYY-MM-DD');
+    ctx.response.type = 'text/html';
+    ctx.response.body = env.render('template/index/getuserinfo/index.html',{userInfo: data, type: true});
+}
 
 
 
@@ -100,6 +113,8 @@ module.exports = {
     'GET /qrcode': qrCode_page,//生成带场景值的二维码页面
     'GET /share':share_page,//微信分享页面
     'GET /getopenid': getOpenId_page,//获取openid页面
+    'GET /getuserinfo': getUserInfo_page, //获取用户信息
+    'GET /getuserinfo1': accessTokenGetUserInfo_page,//通过access_token获取用户信息
     
 
     'POST /getWxShareData': getWxShare_data, //获取微信分享先关配置

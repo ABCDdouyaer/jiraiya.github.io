@@ -1,0 +1,62 @@
+{% extends 'common/base.html'%}
+
+{% block header_content %}
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>微信分享测试页面</title>
+{% endblock %}
+
+{% block block_head_css %}
+ <link rel="stylesheet" href="/template/index/getuserinfo/index.css">
+{% endblock %}
+
+{% block block_head_js %}
+ <script src='/template/index/getuserinfo/index.js'></script>    
+{% endblock %}
+
+
+{% block block_body %}
+<div class='userinfo'>
+  {% if type %}
+  <div>
+    <img src="{{userInfo.headimgurl}}" alt="">
+    <p>昵称：{{userInfo.nickname}}</p>
+    {% if userInfo.sex %}
+    <p>性别：男</p>
+    {% else %}
+    <p>性别：女</p>
+    {% endif %}
+    <p>地址：{{userInfo.country}} {{userInfo.province}} </p>
+    <p>openId：{{userInfo.openid}}</p>
+    {% if userInfo.unionid %}
+    <p>unionId：{{userInfo.unionid}}</p>
+    {% else %}
+    <p>unionId：暂无</p>
+    {% endif %}
+    {% if userInfo.subscribe %}
+    <p>是否订阅公众号：是</p>
+    {% else %}
+    <p>是否订阅公众号：否</p>
+    {% endif %}
+    <p>关注时间：{{userInfo.subscribe_time}}</p>
+  </div>
+  {% else %}
+  <div>
+    <img src="{{userInfo.headimgurl}}" alt="">
+    <p>昵称：{{userInfo.nickname}}</p>
+    {% if userInfo.sex %}
+    <p>性别：男</p>
+    {% else %}
+    <p>性别：女</p>
+    {% endif %}
+    <p>地址：{{userInfo.country}} {{userInfo.province}} </p>
+    <p>openId：{{userInfo.openid}}</p>
+    {% if userInfo.unionid %}
+    <p>unionId：{{userInfo.unionid}}</p>
+    {% else %}
+    <p>unionId：暂无</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

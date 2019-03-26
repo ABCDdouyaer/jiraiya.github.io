@@ -79,7 +79,7 @@ Object.defineProperty(global, 'G_CommonConfig',{
 //启用模拟redis
 
 Object.defineProperty(global, 'G_Redis',{
-    value: require('./utils/redis.js'),
+    value: require('./utils/simulation_redis.js'),
     writable: false
 });
 

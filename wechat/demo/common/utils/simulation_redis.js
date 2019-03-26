@@ -28,7 +28,7 @@ class Redis{
         if(this.data[key]){
             const now = Date.now();
             const expire = this.data[key].expire;
-            if(now < expire || expire ==='in'){
+            if(now < expire || expire ==='forever'){
                 return this.data[key].value;
             }else{
                 delete this.data[key];

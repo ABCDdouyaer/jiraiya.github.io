@@ -1,0 +1,9 @@
+.userinfo{
+    margin-top: 30px;
+    font-size: 15px;
+    text-align: center;
+}
+.userinfo p{
+    text-align: left;
+    padding-left: 120px;
+}

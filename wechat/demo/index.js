@@ -24,5 +24,5 @@ app.use(koaBody());
 app.use(router.routes());
 app.use(koaStatic(ROOT_PATH));
 app.listen(80,()=>{
-    console.log('app started at port 8080...');
+    console.log('app started at port 80...');
 })

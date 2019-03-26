@@ -91,8 +91,33 @@ async function getQrCode(){
     })
 }
 
+
+async function getUserInfo(){
+    const openId = G_Redis.get('openId');//redis中获取
+    const accessToken = await getAccessToken();
+    return new Promise((resolve, reject) => {
+        urllib.request(
+            'https://api.weixin.qq.com/cgi-bin/user/info',
+                {
+                    method: 'GET',
+                    dataType: 'json',
+                    data: {
+                        access_token:accessToken,
+                        openid: openId,
+                        lang: 'zh_CN'
+                    }
+                }).then(res => {
+                if(res.status === 200){
+                    resolve(res.data);
+                }else{
+                    reject(res.statusMessage);
+                } 
+            })
+    })
+}
 module.exports = {
     getAccessToken,
     getJsApiTicket,
-    getQrCode
+    getQrCode,
+    getUserInfo
 }
