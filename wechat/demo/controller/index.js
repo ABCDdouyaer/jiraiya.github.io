@@ -100,6 +100,7 @@ async function getUserInfo_page(ctx, next){
 //手动授权获取openid及其unionId 以及用户信息
 async function accessTokenGetUserInfo_page(ctx, next){
     const data = await G_Wx.getUserInfo();
+    console.log(data)
     data.subscribe_time = moment(data.subscribe_time * 1000).format('YYYY-MM-DD');
     ctx.response.type = 'text/html';
     ctx.response.body = env.render('template/index/getuserinfo/index.html',{userInfo: data, type: true});

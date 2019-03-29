@@ -1,0 +1,38 @@
+{
+  "loader": [
+    {
+      "name": "vue-loader",
+      "desc": "编译.vue模板文件"
+    },
+    {
+      "name": "css-loader",
+      "desc": "将css从js中抽离出来"
+    },
+    {
+      "name": "style-loader",
+      "desc": "将css文件插入html"
+    }
+  ],
+  "辅助工具": [
+    {
+      "name": "clean-webpack-plugin",
+      "desc": "打包之前清空dist文件夹"
+    },
+    {
+      "name": "webpack-bundle-analyzer",
+      "desc": "生成webpack打包分析图"
+    }
+  ],
+  "自带plugin": [
+    {
+      "name": "webpack/lib/CommonChunkPlugin",
+      "desc": "4.0之前webpack抽离公共代码"
+    }
+  ],
+  "plugin": [
+    {
+      "name": "html-webpack-plugin",
+      "desc": "将打包的依赖插入html"
+    }
+  ]
+}
