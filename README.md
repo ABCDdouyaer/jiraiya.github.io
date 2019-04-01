@@ -18,6 +18,10 @@
 
 - [webpack构建流程](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/4)
 - [webpack核心包tapaple](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/2)
+- [webpack打包后代码解析](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/25)
+- [webpack之业务代码、manifest、vendor](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/26)
+- [webpack3.0的commonChunkPlugin](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/27)
+- [webpack3.0的动态链接库dll](https://github.com/ABCDdouyaer/jiraiya.github.io/issues/28)
 
 ## 设计模式
    
